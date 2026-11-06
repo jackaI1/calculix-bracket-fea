@@ -1,12 +1,16 @@
-# How a bolted bracket bends
+I merged this into my existing [lifeos-desk-node project](https://github.com/jackaI1/lifeos-desk-node/tree/main/projects/calculix-bracket-fea). The current code is in `projects/calculix-bracket-fea/` there. I kept the code here so older links still work.
 
-I built a repeatable bracket simulation because I wanted to know whether a stress plot was giving me a dependable answer. A picture alone cannot tell me that, so I first check a simple beam against a hand calculation, then make the bracket mesh smaller and see which results settle.
+The move keeps the original layout, including `tests/test_model.py`, `tests/test_frd.py`, `tests/test_results.py`, `tests/test_analysis.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-The model estimates how an aluminium L bracket moves and where stress builds up under three loads. A mesh divides the shape into small pieces; the solver calculates how those pieces stretch and bend. The report compares four mesh sizes and keeps the assumptions beside the numbers.
+The 5 test source files moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
 
-**Start with the [study report](docs/study/report.md)** for the beam check, all 12 bracket results and plots. To reproduce it, install the tools below and run `python -m fea.study all`.
+Omitted workflows: `calculix-bracket-fea-fea.yml`: The relocated workflow did not complete successfully within the migration batch. Local test sources remain available.
 
-![Combined-load bracket stress](docs/study/bracket-stress.png)
+---
+
+# calculix-bracket-fea
+
+I built a repeatable bracket simulation to learn how the underlying idea works. This is a learning project.
 
 ## What I found
 
@@ -57,12 +61,12 @@ I use Gmsh to make quadratic tetrahedra, curved solid elements with ten nodes, a
 
 This is an idealized attachment study. It does not check bolt strength, slipping, fatigue, plastic deformation or a real assembly's working load. [The report](docs/study/report.md#assumptions-and-limits) explains those limits and the refinement results.
 
-## Code and checks
+## Tests and limits
 
-- `fea/model.py` constructs the beam and bracket, embeds fixed-coordinate stress gauges and distributes end-face traction while preserving force and moment.
-- `fea/solver.py` writes CalculiX decks and runs the solver with a timeout.
-- `fea/analysis.py` contains the hand calculation and strict readers for solver result files.
-- `fea/study.py` checks force/moment balance and load superposition, then records deck hashes and numerical results.
-- `fea/report.py` regenerates the report and plots from solved fields.
+There are 5 test source files in this copy. That source count does not establish an execution result. This is a source snapshot, and running it on a new machine may need environment-specific setup.
 
-There were no tests in the initial repository. The 30 tests cover hand calculations, stress conversion, malformed results, mesh/load checks and a real beam solve. CI runs them on Ubuntu, then solves all twelve bracket cases and checks force balance, moment balance and linear load superposition. Each run uploads its decks and report so I can inspect the actual solver results.
+
+
+The relocated workflow did not complete successfully within the migration batch. Local test sources remain available.
+
+No project-specific GitHub Actions workflow was retained. The local test sources remain in this folder.
