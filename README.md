@@ -2,7 +2,7 @@ I merged this into my existing [lifeos-desk-node project](https://github.com/jac
 
 The move keeps the original layout, including `tests/test_model.py`, `tests/test_frd.py`, `tests/test_results.py`, `tests/test_analysis.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-The 5 test source files moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
+The 5 files of test code and supporting test helpers moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
 
 Omitted workflows: `calculix-bracket-fea-fea.yml`: The relocated workflow did not complete successfully within the migration batch. Local test sources remain available.
 
@@ -11,6 +11,8 @@ Omitted workflows: `calculix-bracket-fea-fea.yml`: The relocated workflow did no
 # calculix-bracket-fea
 
 I built a repeatable bracket simulation to learn how the underlying idea works. This is a learning project.
+
+I use example geometry and simulated loads for the numerical checks.
 
 ## What I found
 
